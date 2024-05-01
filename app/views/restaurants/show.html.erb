@@ -1,0 +1,9 @@
+<h1 style="color:darkblue"><%= @restaurant.name %></h1>
+<br>
+<div id="restaurant">
+  <p><%= @restaurant.address %></p>
+  <p><%= @restaurant.phone_number %></p>
+  <p><%= @restaurant.category.titleize %></p>
+</div>
+
+<p><%= link_to "Back to the list", restaurants_path %></p>

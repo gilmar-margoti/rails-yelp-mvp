@@ -1,9 +1,21 @@
-<h1 style="color:darkblue"><%= @restaurant.name %></h1>
-<br>
-<div id="restaurant">
-  <p><%= @restaurant.address %></p>
-  <p><%= @restaurant.phone_number %></p>
-  <p><%= @restaurant.category.titleize %></p>
-</div>
+<p style="color: green"><%= notice %></p>
 
-<p><%= link_to "Back to the list", restaurants_path %></p>
+<%= render @restaurant %>
+
+<p><strong>Reviews</strong></p>
+<ul class="list-group">
+  <% @restaurant.reviews.each do |review| %>
+    <li class="list-group-item">
+      <%= review.content %>
+      <%= link_to "Delete",
+        review_path(review),
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+      %>
+    </li>
+  <% end %>
+</ul>
+<br>
+
+<div>
+  <%= link_to "Back to restaurants", restaurants_path %>
+</div>
